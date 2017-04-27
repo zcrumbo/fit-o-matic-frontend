@@ -1,0 +1,53 @@
+@import '../../../scss/lib/theme/vars';
+
+.display-all-grid {
+  .all-bikes-view-item {
+    text-align: center;
+    //height: 26em;
+    display: inline-block;
+    margin-bottom: 0.5em;
+    padding:$gutter-std/3;
+    div.inner-container{
+     border: 1px solid $app-primary;
+      background-color: $white;
+
+   }
+      h3{
+        margin: 0;
+      }
+
+      button {
+        margin: $gutter-std auto;
+        float: none;
+        //margin-right: 37%;
+       }
+    .img-container {
+      margin: 1em;
+      max-height: 18em;
+      min-height: 26vw;
+      border-bottom: 1px solid $app-primary;
+      overflow: hidden;
+    img {
+      max-height: 100%;
+      max-width: 100%;
+      height: auto;
+      }
+    }
+  }
+}
+
+
+  @media #{$large-mobile} {
+    .display-all-grid {
+      .all-bikes-view-item {
+        .img-container {
+          height: 10em;
+          img{
+            max-height: 100%;
+          }
+      }
+    }
+  }
+
+
+}
