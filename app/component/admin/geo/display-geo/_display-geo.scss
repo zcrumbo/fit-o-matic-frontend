@@ -2,7 +2,14 @@
 
 
 .display-geometry{
+  li{
+    cursor: pointer;
+  }
   .btn-std{
     float:none;
+  }
+  input {
+    width:94%;
+    margin:$gutter-std;
   }
 }

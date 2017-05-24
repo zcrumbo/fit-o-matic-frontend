@@ -4,7 +4,7 @@ require('./_display-mfr.scss');
 
 module.exports = {
   template: require('./display-mfr.html'),
-  controller: ['$log', 'mfrService', DisplayMfrController],
+  controller: ['$log', DisplayMfrController],
   controllerAs: 'displayMfrCtrl',
   bindings: {
     brand: '<',
@@ -18,19 +18,13 @@ module.exports = {
   }
 };
 
-function DisplayMfrController($log, mfrService){
+function DisplayMfrController($log){
   $log.debug('DisplayMfrController');
 
   this.passCurrentBike = function(bike){
     $log.debug('displayMfrCtrl.passCurrentBike');
     this.setCurrentBike({newBike:bike});
   };
-  // this.showMfrBikes = function() {
-  //   $log.debug('HERE IS THE SHOWMFRBIKES FUNCTION CALL. HERE IS THE BRAND WHICH IS BEING PASSED INTO THE setCurrentMfr(--) function:', this.brand);
-  //   this.setCurrentMfr(this.brand);
-  //   this.fetchMfrBikes();
-  //   // this.showDisplayBike = !this.showDisplayBike;
-  // };
 
   this.showAddBike = false;
   this.showDisplayBike = false;

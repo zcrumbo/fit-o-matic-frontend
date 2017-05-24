@@ -15,18 +15,17 @@ function ProfileDisplayController($log, $window, profileService, geoService){
 
   const defaultPhoto = require('../../../assets/user-anon.jpg');
 
-  geoService.metric ? this.units='centimeters' : this.units = 'inches';
 
   this.switchUnits = function() {
-    geoService.metric = !geoService.metric;
-    geoService.metric ? this.units='centimeters' : this.units = 'inches';
-    //$window.localStorage.metric = JSON.stringify(geoService.metric);
+    this.profile.metric = !this.profile.metric;
+    this.profile.metric ? this.units='centimeters' : this.units = 'inches';
   };
 
   this.fetchProfile = function(){
     profileService.fetchProfile()
     .then( res => {
       this.profile = res.data;
+      this.profile.metric ? this.units='centimeters' : this.units = 'inches';
       this.profile.email = $window.localStorage.getItem('email');
       if (this.profile.height && this.profile.inseam) this.fetchResults();
       if (!this.profile.photoURI) this.profile.photoURI = defaultPhoto;
@@ -46,9 +45,9 @@ function ProfileDisplayController($log, $window, profileService, geoService){
   };
 
   this.fetchResults = function(){
-    geoService.fetchGeo(this.profile.height, this.profile.inseam)
+    geoService.fetchGeo(this.profile.height, this.profile.inseam, this.profile.metric)
     .then( res => {
-      $log.debug('retrieveResults');
+      $log.debug('profileDisplayCtrl.fetchResults');
 
       res.geo.forEach( geo => {
         this.profile.geoID.forEach( favoriteId => {

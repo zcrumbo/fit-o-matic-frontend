@@ -1,5 +1,5 @@
   <div class="bike-modal" ng-if="detailModalCtrl.resolve.modalData.bike" >
-   <div class="close"></div>
+   <div class="close" ng-click="detailModalCtrl.closeModal()"><span class="glyphicon glyphicon-remove"></span></div>
      <h2>{{ detailModalCtrl.resolve.modalData.mfrID.name}} <span>{{ detailModalCtrl.resolve.modalData.bikeName}}</span></h2>
     <img ng-src="{{ detailModalCtrl.resolve.modalData.photoURI }}"
     alt="{{ detailModalCtrl.resolve.modalData.desc }}"
@@ -18,6 +18,7 @@
 
   <div class="bike-modal"
     ng-if="detailModalCtrl.resolve.modalData.geo">
+    <div class="close" ng-click="detailModalCtrl.closeModal()"><span class="glyphicon glyphicon-remove"></span></div>
     <h2>{{ detailModalCtrl.mfr.name }} {{ detailModalCtrl.resolve.modalData.bikeID[0].bikeName }}</h2>
 
     <img ng-src="{{ detailModalCtrl.resolve.modalData.bikeID[0].photoURI }}"
@@ -25,33 +26,53 @@
     >
     <div class="details">
        <button ng-if="detailModalCtrl.isFavorite"
-        class="btn-std"
+        class="btn-std delete"
         ng-click="detailModalCtrl.removeFavorite()">
-       remove from favorites
+       <span class="glyphicon glyphicon-remove"></span> remove from favorites
        </button>
        <button ng-if="!detailModalCtrl.isFavorite"
-        class="btn-std"
+        class="btn-std favorite"
         ng-click="detailModalCtrl.addFavorite()">
-        add to favorites
+        <span class="glyphicon glyphicon-heart-empty"></span> add to favorites
         </button>
       <ul>
-        <li>Website:<a href="{{detailModalCtrl.resolve.modalData.url}}"> {{ detailModalCtrl.resolve.modalData.bikeID[0].url}}</a></li>
+        <li ng-if="detailModalCtrl.resolve.modalData.url">Website:<a href="{{detailModalCtrl.resolve.modalData.url}}"> {{ detailModalCtrl.resolve.modalData.bikeID[0].url}}</a></li>
         <li>Size: {{ detailModalCtrl.resolve.modalData.bikeSizeName}}</li>
         <li>Category: {{  detailModalCtrl.resolve.modalData.bikeID[0].category }}
         </li>
        </ul>
        <h3>Geometry</h3>
       <ul class="chart">
-        <li>Wheel Size: {{ detailModalCtrl.resolve.modalData.wheelSize }}</li>
-         <li>BB Drop: {{ detailModalCtrl.resolve.modalData.bbDrop }}</li>
-         <li>Fork Length: {{ detailModalCtrl.resolve.modalData.forkLength }}</li>
-         <li>Fork Offset: {{ detailModalCtrl.resolve.modalData.forkOffset }}</li>
-         <li>Top Tube Length: {{ detailModalCtrl.resolve.modalData.topTubeLength }}</li>
-         <li>headTubeLength: {{ detailModalCtrl.resolve.modalData.headTubeLength }}</li>
-         <li>Head Tube Angle: {{ detailModalCtrl.resolve.modalData.headTubeAngle }}</li>
-         <li>Seat Tube Angle: {{ detailModalCtrl.resolve.modalData.seatTubeAngle }}</li>
-         <li>Stack: {{ detailModalCtrl.resolve.modalData.stack }}</li>
-         <li>Reach: {{ detailModalCtrl.resolve.modalData.reach }}</li>
+        <li ng-if="detailModalCtrl.resolve.modalData.wheelSize">
+          Wheel Size: {{ detailModalCtrl.resolve.modalData.wheelSize }}
+        </li>
+         <li ng-if="detailModalCtrl.resolve.modalData.bbDrop" >
+          BB Drop: {{ detailModalCtrl.resolve.modalData.bbDrop }}
+         </li>
+         <li ng-if="detailModalCtrl.resolve.modalData.forkLength">
+          Fork Length: {{ detailModalCtrl.resolve.modalData.forkLength }}
+         </li>
+         <li ng-if="detailModalCtrl.resolve.modalData.forkOffset" >
+          Fork Offset: {{ detailModalCtrl.resolve.modalData.forkOffset }}
+        </li>
+         <li ng-if="detailModalCtrl.resolve.modalData.topTubeLength">
+          Top Tube Length: {{ detailModalCtrl.resolve.modalData.topTubeLength }}
+        </li>
+         <li ng-if="detailModalCtrl.resolve.modalData.headTubeLength">
+          headTubeLength: {{ detailModalCtrl.resolve.modalData.headTubeLength }}
+        </li>
+         <li ng-if="detailModalCtrl.resolve.modalData.headTubeAngle">
+          Head Tube Angle: {{ detailModalCtrl.resolve.modalData.headTubeAngle }}
+        </li>
+         <li ng-if="detailModalCtrl.resolve.modalData.seatTubeAngle" >
+          Seat Tube Angle: {{ detailModalCtrl.resolve.modalData.seatTubeAngle }}
+        </li>
+         <li ng-if="detailModalCtrl.resolve.modalData.stack">
+          Stack: {{ detailModalCtrl.resolve.modalData.stack }}
+        </li>
+         <li ng-if="detailModalCtrl.resolve.modalData.reach">
+          Reach: {{ detailModalCtrl.resolve.modalData.reach }}
+        </li>
        </ul>
      </div>
   </div>

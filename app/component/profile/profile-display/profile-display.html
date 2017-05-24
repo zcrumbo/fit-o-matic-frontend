@@ -1,7 +1,7 @@
 <section class="profile-disp">
   <div class="image">
   <img
-      ng-src="{{ profileDisplayCtrl.profile.photoURI }}"
+      src="{{ profileDisplayCtrl.profile.photoURI }}"
       alt="profile photo {{ profileDisplayCtrl.profile.name }}">
       <profile-img profile="profileDisplayCtrl.profile"></profile-img>
   </div>
@@ -40,8 +40,8 @@
               placeholder="full name"></li>
         <li> {{ profileDisplayCtrl.profile.email }} </li>
         <li> <input ng-model="profileDisplayCtrl.profile.gender" placeholder="gender"> </li>
-        <li> <input ng-model="profileDisplayCtrl.profile.height" placeholder="height" type="number"> </li>
-        <li> <input ng-model="profileDisplayCtrl.profile.inseam" placeholder="inseam" type="number"> </li>
+        <li> <input ng-model="profileDisplayCtrl.profile.height" placeholder="height in {{ profileDisplayCtrl.units }}" type="number"> </li>
+        <li> <input ng-model="profileDisplayCtrl.profile.inseam" placeholder="inseam in {{ profileDisplayCtrl.units }}" type="number"> </li>
         <li>
           <span
             class="btn-std units"
@@ -61,6 +61,7 @@
 <profile-instructions ng-if="!profileDisplayCtrl.profile.height || !profileDisplayCtrl.profile.inseam"></profile-instructions>
 
 <favorites-display
+  ng-if="profileDisplayCtrl.results"
   profile="profileDisplayCtrl.profile"
   fetch-profile="profileDisplayCtrl.fetchProfile()"
   remove-favorite="profileDisplayCtrl.removeFavorite(toRemove)"></favorites-display>
